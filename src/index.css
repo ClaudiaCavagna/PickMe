@@ -66,6 +66,17 @@ p {
   transform: scale(1.04);
 }
 
+@media screen and (min-width: 586px) {
+  .bg-header {
+    padding-inline: 6rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .bg-header {
+    padding-inline: 7rem;
+  }
+}
 
 /* FOOTER STYLE */
 .position-footer {
@@ -90,8 +101,7 @@ p {
   }
 
   .hero-xl h1 {
-    font-size: 3.5rem;
-    margin-right: 2.5rem;
+    font-size: 3rem;
     padding-right: 8rem;
   }
   .hero-xl img {
@@ -100,6 +110,12 @@ p {
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .hero-xl h1 {
+    font-size: 4rem;
+    margin-right: 4rem;
+  }
+}
 /* HOME BODY STYLE */
 .search-section {
   margin-top: 1.7rem;
