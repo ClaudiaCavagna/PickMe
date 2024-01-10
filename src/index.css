@@ -28,9 +28,19 @@ h1 {
   font-size: 2.7rem;
   font-weight: 800;
 }
+
+h4 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
 /* HELPERS */
 .container {
-  padding-inline: 3rem;
+  padding-inline: 2rem;
   padding-block: 1rem;
   width: 100%;
 }
@@ -82,10 +92,69 @@ h1 {
   .hero-xl h1 {
     font-size: 3.5rem;
     margin-right: 2.5rem;
-    padding: 4rem;
+    padding-right: 8rem;
   }
   .hero-xl img {
     width: 500px !important;
     height: 390px !important;
+  }
+}
+
+/* HOME BODY STYLE */
+.search-section {
+  margin-top: 1.7rem;
+}
+.request-p {
+  color: var(--grey-600);
+  margin-top: 0.9rem;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.input-wrapper {
+  background-color: var(--grey-800);
+  border: 1px solid var(--grey-500);
+  width: 100%;
+  border-radius: 22px;
+  padding-inline: 15px;
+  padding-block: 8px;
+  margin-top: 1.5rem;
+}
+
+.input-wrapper input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-left: 3px;
+  appearance: none;
+  outline: none;
+}
+
+.input-wrapper button {
+  background-color: transparent;
+  border: none;
+  padding-block: 2px;
+  padding-inline: 10px;
+}
+
+.input-wrapper button .search-icon:hover {
+  transform: scale(1.04);
+}
+
+@media screen and (min-width: 992px) {
+  .search-section {
+    margin-top: 3rem;
+  }
+
+  h4{
+    font-size: 3rem;
+  }
+
+  .request-p {
+    font-size: 1rem;
+  }
+  .input-wrapper {
+    width: 30%;
   }
 }

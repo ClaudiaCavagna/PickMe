@@ -4,7 +4,7 @@ import NftImage from "../images/nft-img.png";
 
 const Hero = () => {
   return (
-    <div className='hero-xl' style={{marginTop: '90px'}}>
+    <section className='hero-xl' style={{marginTop: '90px'}}>
       <div>
         <h1>The easiest way to buy Photos as NFT.</h1>
       </div>
@@ -14,7 +14,7 @@ const Hero = () => {
         borderRadius: '16px',
         marginBlock: '2rem'
       }}/>
-    </div>
+    </section>
   )
 }
 
