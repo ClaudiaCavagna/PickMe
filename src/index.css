@@ -1,13 +1,91 @@
-body {
+*,
+*::after,
+*::before {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --white: #fff;
+  --grey-900: #0e0e0e;
+  --grey-800: #121212;
+  --grey-700: #6c6767;
+  --grey-600: #898989;
+  --grey-500: #b9b9b9;
+  --purple-300: #f31caa;
+  --purple-600: #ad3eff;
+  --error: #ff6966;
+}
+
+body {
+  background-color: var(--grey-800);
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: 2.7rem;
+  font-weight: 800;
+}
+/* HELPERS */
+.container {
+  padding-inline: 3rem;
+  padding-block: 1rem;
+  width: 100%;
+}
+
+.place-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* HEADER STYLE */
+.bg-header {
+  background-color: var(--grey-800);
+  padding-inline: 3rem;
+  padding-block: 1rem;
+  position: fixed;
+  z-index: 999;
+}
+.cart-icon {
+  width: 80%;
+}
+.cart-icon:hover {
+  transform: scale(1.04);
+}
+
+
+/* FOOTER STYLE */
+.position-footer {
+  margin-top: 118px;
+}
+
+.footer-icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.footer-text {
+  line-height: 0.5rem;
+}
+
+/* HERO */
+@media screen and (min-width: 992px) {
+  .hero-xl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-xl h1 {
+    font-size: 3.5rem;
+    margin-right: 2.5rem;
+    padding: 4rem;
+  }
+  .hero-xl img {
+    width: 500px !important;
+    height: 390px !important;
+  }
 }

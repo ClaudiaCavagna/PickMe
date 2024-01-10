@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
 
-const Layout = () => {
+const Layout = ({childen}) => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <Header />
+      {childen}
+      <Footer />
+    </>
   )
 }
 
-export default Layout
+export default Layout;
