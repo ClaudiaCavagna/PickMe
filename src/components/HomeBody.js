@@ -1,19 +1,13 @@
 import React, {useEffect} from 'react';
 import { ReactComponent as SearchIcon } from "../images/search-media.svg";
-import instance from '../api';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const HomeBody = () => {
-  useEffect(()=>{
-    async function prova(){
-      try{
-        const reponse = await instance.get("photos");
-        console.log(reponse.data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    prova();
-  }, [])
+  
+  const { photos } = useSelector((state) => state);
+
+  console.log(photos);
   return (
     <section>
       <div className='place-items search-section'>
