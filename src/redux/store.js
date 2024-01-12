@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import apireducer from './reducers/api-reducer';
+import apiReducer from './reducers/api-reducer';
 
 const store = configureStore({
     reducer: {
-        photos: apireducer,
+        photos: apiReducer,
     },
 });
 
-export default store;
+export {store};

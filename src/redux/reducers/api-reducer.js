@@ -8,9 +8,13 @@ const initialState = {
         message: ""
     },
     photos: [],
+    rate_limit: {
+        remaining: null,
+        total: 50,
+    },
 };
 
-const apiSlice = {
+const apiSlice = createSlice({
     name: 'api',
     initialState,
     reducers: {
@@ -33,10 +37,31 @@ const apiSlice = {
             state.error.state = false;
             state.error.message = "";
         },
+        checkRateLimiter: (state, action) => {
+            state.rate_limit = {...action.payload}
+        }
     },
-};
+});
 
-const { startLoading, saveData, stopLoading, cleanError, catchError } = apiSlice.actions
+const { startLoading, saveData, stopLoading, cleanError, catchError, checkRateLimiter } = apiSlice.actions;
+
 const {reducer} = apiSlice;
+
+export const fetchData = (path) => async (dispatch) => {
+    dispatch(startLoading());
+    dispatch(cleanError());
+    try {
+        const response = await instance.get(path);
+        console.log(response);
+        dispatch(saveData(response.data));
+        dispatch(checkRateLimiter({
+            total: response.headers['x-ratelimit-limit'],
+            remaining: response.headers['x-ratelimit-remaining'],
+        }));
+    } catch (err) {
+        dispatch(catchError(err.errors));
+    }
+    dispatch(stopLoading());
+};
 
 export default reducer;
