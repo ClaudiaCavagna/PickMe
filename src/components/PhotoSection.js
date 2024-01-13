@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Photo from './Photo';
 
-const PhotoSection = () => {
+const PhotoSection = ({row, index}) => {
   return (
-    <div>
-      
-    </div>
+    <section className='d-flex justify-content-between'>
+      {row.map((photo) => {
+        return <Photo key={photo.id} {...photo} />
+      })}
+    </section>
   )
 }
 

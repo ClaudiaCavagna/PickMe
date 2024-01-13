@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ReactComponent as SearchIcon } from "../images/search-media.svg";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../redux/reducers/api-reducer';
+import { rowalizer } from '../utils/helpers';
+import PhotoSection from './PhotoSection';
 
 const HomeBody = () => {
   
@@ -27,7 +29,9 @@ const HomeBody = () => {
       </div>
       <div className='mt-5 text-center'>
         { !loading && !error.status && photos.length > 0 ? (
-          'photo'
+          rowalizer(photos).map(el => {
+            return <PhotoSection row={el}/>
+          })
         ) : !loading && error.status ? (
           error.message && error.message.length > 0 ? (
             error.message.join(" ")
@@ -42,7 +46,7 @@ const HomeBody = () => {
       </div>
       <div className='mt-5 text-end'>
         <p>Items per Page 
-          <select value={itemPerPage} onChange={(e) => setItemPerPage(e)}>
+          <select className='ms-2' value={itemPerPage} onChange={(e) => setItemPerPage(e)}>
             {Array.from({length: 6}, (_,index) => {
               return (index + 1) * 3;
             }).map(el => {
