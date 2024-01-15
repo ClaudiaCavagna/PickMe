@@ -2,8 +2,8 @@ import React from 'react'
 
 const Skeleton = () => {
   return (
-    <div>
-      
+    <div style={{background: 'grey', borderRadius: '50px'}}>
+      skeleton
     </div>
   )
 }

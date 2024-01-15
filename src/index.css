@@ -16,6 +16,7 @@
   --purple-300: #f31caa;
   --purple-600: #ad3eff;
   --error: #ff6966;
+  --translucent: #121212da;
 }
 
 body {
@@ -51,6 +52,16 @@ p {
   align-items: center;
 }
 
+.cart-icon-small {
+  width: 40%;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  padding-block: 2px;
+  padding-inline: 10px;
+}
 /* HEADER STYLE */
 .bg-header {
   background-color: var(--grey-800);
@@ -62,7 +73,7 @@ p {
 .cart-icon {
   width: 80%;
 }
-.cart-icon:hover {
+.cart-icon:hover, .cart-icon-small:hover {
   transform: scale(1.04);
 }
 
@@ -145,13 +156,6 @@ p {
   margin-left: 3px;
   appearance: none;
   outline: none;
-}
-
-.input-wrapper button {
-  background-color: transparent;
-  border: none;
-  padding-block: 2px;
-  padding-inline: 10px;
 }
 
 .input-wrapper button .search-icon:hover {

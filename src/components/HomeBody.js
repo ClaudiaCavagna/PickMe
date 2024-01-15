@@ -23,7 +23,7 @@ const HomeBody = () => {
       </div>
       <div className='input-wrapper place-items'>
         <input type='text' placeholder='Search your photo'/>
-        <button>
+        <button className='btn'>
           <SearchIcon className='search-icon' />
         </button>
       </div>

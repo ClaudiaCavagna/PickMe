@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className='w-100 place-items bg-header'>
         <Logo />
-        <Link to='/checkout' className='btn-cart'>
+        <Link to='/checkout'>
           <CartIcon className='cart-icon'/>
         </Link>
     </header>
