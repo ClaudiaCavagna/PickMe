@@ -16,7 +16,7 @@
   --purple-300: #f31caa;
   --purple-600: #ad3eff;
   --error: #ff6966;
-  --translucent: #121212da;
+  --translucent: #121212c8;
 }
 
 body {
@@ -53,7 +53,7 @@ p {
 }
 
 .cart-icon-small {
-  width: 40%;
+  width: 50%;
 }
 
 .btn {
@@ -178,3 +178,4 @@ p {
     width: 30%;
   }
 }
+
