@@ -17,6 +17,7 @@
   --purple-600: #ad3eff;
   --error: #ff6966;
   --translucent: #121212c8;
+  --transparent-pink: #f31cab10;
 }
 
 body {
@@ -74,7 +75,7 @@ p {
 
 .btn-page:hover {
   transform: scale(1.04);
-  background-color: #f31cab10;
+  background-color: var(--transparent-pink);
 }
 .arrow-icon {
   width: 1.5rem;
@@ -186,6 +187,15 @@ p {
 .input-wrapper button .search-icon:hover {
   transform: scale(1.04);
 }
+
+.page-select {
+  background-color: var(--grey-800);
+  color: var(--white);
+  border: none;
+}
+/* .page-select option:hover {
+  background-color: var(--transparent-pink) !important;
+} */
 
 @media screen and (min-width: 992px) {
   .search-section {

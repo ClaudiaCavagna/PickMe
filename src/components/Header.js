@@ -6,10 +6,13 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <header className='w-100 place-items bg-header'>
+      <Link to='/'>
         <Logo />
-        <Link to='/checkout'>
-          <CartIcon className='cart-icon'/>
-        </Link>
+      </Link>
+
+      <Link to='/checkout'>
+        <CartIcon className='cart-icon'/>
+      </Link>
     </header>
   )
 }

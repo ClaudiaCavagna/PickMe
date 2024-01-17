@@ -11,8 +11,8 @@ const HomeBody = () => {
   const { photos, error, loading, rate_limit, query: lastSearch } = useSelector((state) => state.photos);
   const dispatch = useDispatch();
 
-  const [itemPerPage, setItemPerPage] = useState(12);
-  const [query, setQuery] = useState("");
+  const [itemPerPage, setItemPerPage] = useState(lastSearch.itemPerPage || 12);
+  const [query, setQuery] = useState(lastSearch.query || "");
 
   const fetchPhotos = (type = 'latest', page = 1) => {
     let apiUrl = null;
@@ -38,7 +38,7 @@ const HomeBody = () => {
   };
 
 
-  const searchPhoto = (page = 6) => {
+  const searchPhoto = (page = 1) => {
     fetchPhotos("search", page);
   }
 
@@ -70,17 +70,17 @@ const HomeBody = () => {
       </div>
       <div className='mt-5 text-center'>
         { !loading && !error.status && (photos?.length > 0 || photos?.results.length > 0) ? (
-          rowalizer(photos?.results ? photos.results : photos).map(el => {
-            return <PhotoSection row={el}/>
+          rowalizer(photos?.results ? photos.results : photos).map((row, index) => {
+            return <PhotoSection row={row} index={index}/>
           })
         ) : !loading && error.status ? (
-          error.message && error.message.length > 0 ? (
-            error.message.join(" ")
-          ) : (
-            <h3>Error</h3>
-          )
+          <h3>
+            {
+              error?.message && error?.message?.length > 0 ? error.message.join(" ") : "Sorry, an error occured. Try later"
+            }
+          </h3>
         ) : (
-          <h3>loading...</h3>
+          <h3>Loading...</h3>
         )
         }
       </div>
@@ -89,7 +89,7 @@ const HomeBody = () => {
       </div>
       <div className='mt-5 text-end'>
         <p>Items per Page 
-          <select className='ms-2' value={itemPerPage} onChange={(e) => setItemPerPage(e.target.value)}>
+          <select className='ms-2 page-select' value={itemPerPage} onChange={(e) => setItemPerPage(e.target.value)}>
             {Array.from({length: 7}, (_,index) => {
               return (index + 1) * 3;
             }).map(el => {

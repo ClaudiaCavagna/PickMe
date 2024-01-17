@@ -7,49 +7,38 @@ import { useSelector } from 'react-redux';
 const Paginator = () => {
   const {currentPage, hasPrevPage, hasNextPage} = useSelector(store => store.photos.pagination);
 
+  function pagination() {
+    if(!hasPrevPage && hasNextPage) {
+      return 'd-flex justify-content-end';
+    }  else if (hasPrevPage && hasNextPage) {
+      return 'd-flex justify-content-between';
+    } else if (hasPrevPage && !hasNextPage) {
+      return 'd-flex justify-content-start';
+    }
+  };
+
   return (
-    <div className='d-flex justify-content-around mt-3'>
-    
-    {hasPrevPage && (
-      <div className='d-flex justify-content-start'>
-      <Link to='/'>
-        <button className='btn-page'>
-          <LeftIcon className='arrow-icon me-2'/>
-          Prev
-        </button>
-      </Link>
-    </div>
-    )}
-    {hasNextPage && (
-      <div className='d-flex justify-content-end'>
-        <Link to='/'>
+    <div className={pagination()}>
+      {hasPrevPage && (
+        <Link to={parseInt(currentPage, 10) === 2 ? '/' : `/photo/${parseInt(currentPage, 10) - 1}`}>
+          <button className='btn-page'>
+            <LeftIcon className='arrow-icon me-2'/>
+            Prev
+          </button>
+        </Link>
+
+      )}
+      {hasNextPage && (
+        <Link to={`/photo/${parseInt(currentPage, 10) + 1}`}>
           <button className='btn-page'>
             Next
             <RightIcon className='arrow-icon ms-2'/>
           </button>
         </Link>
-      </div>
-    )}
+      )}
+
     </div>
   )
 }
 
 export default Paginator;
-
-
-// {hasPrevPage && (
-//   <Link to='/'>
-//     <button className='btn-page'>
-//       <LeftIcon className='arrow-icon me-2'/>
-//       Prev
-//     </button>
-//   </Link>
-// )}
-// {hasNextPage && (
-//   <Link to='/'>
-//     <button className='btn-page'>
-//       Next
-//       <RightIcon className='arrow-icon ms-2'/>
-//     </button>
-//   </Link>
-// )}
