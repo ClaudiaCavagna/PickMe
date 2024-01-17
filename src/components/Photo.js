@@ -86,10 +86,10 @@ const Photo = ({alt_description, color, urls: {regular}, likes, id}) => {
     <div style={{marginBottom: '3rem'}}>
       <Card style={{display: load ? 'block' : 'none'}}>
         <div style={{width: '100%', height: '100%', background: {color}}}>
-          <img src={regular} alt={alt_description} onLoad={()=>setLoad(true)} style={{width: '100%', height: '100%'}} />   
+          <img src={regular} alt={alt_description} onLoad={()=>setLoad(false)} style={{width: '100%', height: '100%'}} />   
           <div className='card-action' style={{display: 'grid', alignItems: 'center'}}>
             <div className='d-flex justify-content-between'>
-              <p className=''>{likes} 
+              <p>{likes} 
                 <FaHeart style={{color: 'var(--purple-300)', marginInline: '5px', marginBottom: '3px'}}/>
               </p>
               <p>{price}€</p>
