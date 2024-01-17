@@ -20,7 +20,7 @@ const WaveBox = styled('div')`
 `;
 
 const SkeletonBox = styled(WaveBox)`
-  background-color: var(--grey-500);
+  background-color: var(--grey-700);
   width: 100%;
   height: 100%;
   ::after {

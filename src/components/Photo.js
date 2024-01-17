@@ -51,21 +51,21 @@ const Card = styled('div')`
   }
   @media screen and (min-width: 630px){
     width: 170px;
-    height: 180px;
+    height: 190px;
     .card-action{
       padding: 2rem;
     }
   }
   @media screen and (min-width: 768px){
     width: 220px;
-    height: 245px;
+    height: 240px;
     .card-action{
       padding: 3rem;
     }
   }
   @media screen and (min-width: 992px) {
-    width: 300px;
-    height: 280px;
+    width: 280px;
+    height: 300px;
   }
   @media screen and (min-width: 1200px) {
     width: 330px;
@@ -81,12 +81,11 @@ const Photo = ({alt_description, color, urls: {regular}, likes, id}) => {
   const price = pricer(likes);
 
   
- 
   return (
     <div style={{marginBottom: '3rem'}}>
       <Card style={{display: load ? 'block' : 'none'}}>
         <div style={{width: '100%', height: '100%', background: {color}}}>
-          <img src={regular} alt={alt_description} onLoad={()=>setLoad(false)} style={{width: '100%', height: '100%'}} />   
+          <img src={regular} alt={alt_description} onLoad={()=>setLoad(true)} style={{width: '100%', height: '100%'}} />   
           <div className='card-action' style={{display: 'grid', alignItems: 'center'}}>
             <div className='d-flex justify-content-between'>
               <p>{likes} 
