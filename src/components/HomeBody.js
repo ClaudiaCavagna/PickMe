@@ -1,35 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { ReactComponent as SearchIcon } from "../images/search-media.svg";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchData } from '../redux/reducers/api-reducer';
+import { catchError, cleanError, fetchData, saveQuery, updatePage } from '../redux/reducers/api-reducer';
 import { rowalizer } from '../utils/helpers';
 import PhotoSection from './PhotoSection';
+import Paginator from './Paginator';
 
 const HomeBody = () => {
   
-  const { photos, error, loading, rate_limit } = useSelector((state) => state.photos);
+  const { photos, error, loading, rate_limit, query: lastSearch } = useSelector((state) => state.photos);
   const dispatch = useDispatch();
 
   const [itemPerPage, setItemPerPage] = useState(12);
   const [query, setQuery] = useState("");
 
-  const fetchPhotos = (type = 'popular', page = 1) => {
+  const fetchPhotos = (type = 'latest', page = 1) => {
     let apiUrl = null;
     if(type === "search") {
-      apiUrl = `search/photos?query=${query}&`;
+      if(query && query.length > 1 && query !== " ") {
+        apiUrl = `search/photos?query=${query}&`;
+      } else {
+        dispatch(catchError([query === '' ? 'Write at least one character' : 'Sorry, no results found']));
+        return;
+      }
     } else {
       apiUrl = "photos?";
     }
+    dispatch(updatePage(page));
     dispatch(fetchData(`${apiUrl}per_page=${itemPerPage}&page=${page}`));
+
+    dispatch(saveQuery({
+      path: `${apiUrl}`.trim(),
+      itemPerPage,
+      type,
+      query
+    }));
   };
 
 
-  const searchPhoto = (page = 1) => {
-    fetchPhotos("search");
+  const searchPhoto = (page = 6) => {
+    fetchPhotos("search", page);
   }
 
   useEffect(() => {
-    fetchPhotos();
+    if(!lastSearch.query){
+      fetchPhotos();
+    } else {
+      fetchPhotos(lastSearch.type);
+    }
+    
   }, [itemPerPage]);
 
   return (
@@ -50,9 +69,8 @@ const HomeBody = () => {
         </button>
       </div>
       <div className='mt-5 text-center'>
-        { !loading && !error.status && photos.length > 0 ? (
-          rowalizer(photos).map(el => {
-            console.log(photos);
+        { !loading && !error.status && (photos?.length > 0 || photos?.results.length > 0) ? (
+          rowalizer(photos?.results ? photos.results : photos).map(el => {
             return <PhotoSection row={el}/>
           })
         ) : !loading && error.status ? (
@@ -65,6 +83,9 @@ const HomeBody = () => {
           <h3>loading...</h3>
         )
         }
+      </div>
+      <div className='mt-2'>
+        <Paginator />
       </div>
       <div className='mt-5 text-end'>
         <p>Items per Page 
