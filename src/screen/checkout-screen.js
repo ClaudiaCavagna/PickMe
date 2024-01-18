@@ -1,7 +1,13 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { useSelector, useDispatch } from 'react-redux';
+import { RiDeleteBack2Fill } from "react-icons/ri";
+import { cleanCart, removeFromCart } from '../redux/reducers/cart-reducer';
 
 const Checkout = () => {
+  const dispatch = useDispatch();
+  const { cart, total } = useSelector(store => store.cart);
+
   return (
     <section className='container'>
       <div style={{marginTop: '90px'}}>
@@ -10,10 +16,27 @@ const Checkout = () => {
       <div className='xl-checkout'>
         <div className='list-container'>
           <div className='text-end'>
-            <button className='btn-remove'>Remove all</button>
+            <button className='btn-remove' onClick={() => dispatch(cleanCart())}>Remove all</button>
           </div>
           <div className='text-checkout'>
-            <h4>No items in the chart</h4>
+            {cart && cart.length > 0 ? (
+              cart.map((el) => {
+                return (
+                  <div key={el.id} className='cart-item'>
+                    <img src={el.url} alt={el.alt_description} style={{width: '160px', height: '90px', borderRadius: '10px 0px 0px 10px'}}/>
+                    <div className='p-1'>
+                      <p>Artist - {el.user}</p>
+                      <h6>{el.price}€</h6>
+                    </div>
+                    <button className='btn' onClick={()=>dispatch(removeFromCart(el))}>
+                      <RiDeleteBack2Fill style={{color: 'var(--purple-300)', fontSize: '1.5rem'}}/>
+                    </button>
+                  </div>
+                )
+              })
+            ) : (
+              <h4>No items selected</h4>
+            )}
           </div>
         </div>
         
@@ -60,7 +83,7 @@ const Checkout = () => {
                 
                 </div>
                 <div className='d-flex justify-content-between mt-3'>
-                  <h5>5€</h5>
+                  <h5>{total}€</h5>
                   <button className='btn-page'>
                     Checkout
                   </button>

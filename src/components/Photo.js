@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { pricer } from '../utils/helpers';
 import { ReactComponent as CartIcon } from '../images/purple-cart.svg';
 import { FaHeart } from "react-icons/fa";
+import { addSingleItem } from '../redux/reducers/cart-reducer';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -76,11 +78,11 @@ const Card = styled('div')`
   }
 `;
 
-const Photo = ({alt_description, color, urls: {regular}, likes, id}) => {
+const Photo = ({alt_description, color, urls: {regular}, likes, id, user: {username}}) => {
   const [load, setLoad] = useState(false);
   const price = pricer(likes);
 
-  
+  const dispatch = useDispatch();  
   return (
     <div style={{marginBottom: '3rem'}}>
       <Card style={{display: load ? 'block' : 'none'}}>
@@ -94,7 +96,7 @@ const Photo = ({alt_description, color, urls: {regular}, likes, id}) => {
               <p>{price}€</p>
             </div>
               
-              <button className='btn'>
+              <button className='btn' onClick={() => dispatch(addSingleItem({id, price, url: regular, alt_description, user: username}))}>
                 <CartIcon className='cart-icon-small' />
               </button>
           </div>   

@@ -10,7 +10,7 @@ export const rowalizer = (array, items_per_row = 3) => {
 
 export const pricer = (likes) => {
     let price = '0';
-    likes % 2 ? price='20' : price='15';
+    likes % 2 ? price=20 : price=15;
     return price;
 };
 
