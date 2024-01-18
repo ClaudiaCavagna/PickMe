@@ -109,36 +109,42 @@ const Checkout = () => {
             }) => (
               <form className='checkout-form' onSubmit={handleSubmit}>
                 <div className='input-wrap'>
-                  <input 
-                    value={values.name} 
-                    name='name' 
-                    placeholder='Name' 
-                    className='medium-input' 
-                    style={errors.name ? {borderColor: 'var(--error)'} : {borderColor: 'var(--grey-600)'}}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.name && errors.name && (
-                    <div>
-                    <p style={{color: 'var(--error)', marginTop: '6px', fontSize: '8px', textAlign: 'right'}}>
-                      {errors.name}
-                    </p>
-                    </div>
-                  )}
-                  <input 
-                    value={values.surname} 
-                    name='surname' 
-                    placeholder='Surname'
-                    className='medium-input'
-                    style={errors.surname ? {borderColor: 'var(--error)'} : {borderColor: 'var(--grey-600)'}}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.surname && errors.surname && (
-                    <p style={{color: 'var(--error)', marginTop: '6px', fontSize: '8px', textAlign: 'right'}}>
-                      {errors.surname}
-                    </p>
-                  )}
+                  <div>
+                    <input 
+                      value={values.name} 
+                      name='name' 
+                      placeholder='Name' 
+                      className='medium-input' 
+                      style={errors.name ? {borderColor: 'var(--error)'} : {borderColor: 'var(--grey-600)'}}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.name && errors.name && (
+                      <div>
+                      <p style={{color: 'var(--error)', fontSize: '8px', textAlign: 'right'}}>
+                        {errors.name}
+                      </p>
+                      </div>
+                    )}
+                  </div>
+                  <div className='divider'></div>
+                  <div>
+                    <input 
+                      value={values.surname} 
+                      name='surname' 
+                      placeholder='Surname'
+                      className='medium-input'
+                      style={errors.surname ? {borderColor: 'var(--error)'} : {borderColor: 'var(--grey-600)'}}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.surname && errors.surname && (
+                      <p style={{color: 'var(--error)', fontSize: '8px', textAlign: 'right'}}>
+                        {errors.surname}
+                      </p>
+                    )}
+                  </div>
+                  
                 </div>
                 <div>
                   <input 
@@ -151,55 +157,62 @@ const Checkout = () => {
                     onBlur={handleBlur}
                   />
                   {touched.card && errors.card && (
-                    <p style={{color: 'var(--error)', marginTop: '6px', fontSize: '8px', textAlign: 'right'}}>
+                    <p style={{color: 'var(--error)', fontSize: '8px', textAlign: 'right'}}>
                       {errors.card}
                     </p>
                   )}
                 </div>
                 <div className='input-wrap'>
-                  <input 
-                    value={values.address} 
-                    name='address' 
-                    placeholder='Address'
-                    className='medium-input' 
-                    style={errors.address ? {borderColor: 'var(--error)'} : {borderColor: 'var(--grey-600)'}}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.address && errors.address && (
-                    <p style={{color: 'var(--error)', marginTop: '6px', fontSize: '8px', textAlign: 'right'}}>
-                      {errors.address}
-                    </p>
-                  )}
-                  <div className='d-flex justify-content-around'>
+                  <div>
                     <input 
-                      value={values.num} 
-                      name='num' 
-                      placeholder='Num' 
-                      className='small-input'
-                      style={errors.num ? {borderColor: 'var(--error)'} : {borderColor: 'var(--grey-600)'}}
+                      value={values.address} 
+                      name='address' 
+                      placeholder='Address'
+                      className='medium-input' 
+                      style={errors.address ? {borderColor: 'var(--error)'} : {borderColor: 'var(--grey-600)'}}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {touched.num && errors.num && (
-                      <p style={{color: 'var(--error)', marginTop: '6px', fontSize: '8px', textAlign: 'right'}}>
-                        {errors.num}
+                    {touched.address && errors.address && (
+                      <p style={{color: 'var(--error)', fontSize: '8px', textAlign: 'right'}}>
+                        {errors.address}
                       </p>
                     )}
-                    <input 
-                      value={values.cap} 
-                      name='cap' 
-                      placeholder='CAP' 
-                      className='small-input'
-                      style={errors.cap ? {borderColor: 'var(--error)'} : {borderColor: 'var(--grey-600)'}}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    /> 
-                    {touched.cap && errors.cap && (
-                      <p style={{color: 'var(--error)', marginTop: '6px', fontSize: '8px', textAlign: 'right'}}>
-                        {errors.cap}
-                      </p>
-                    )}
+                  </div>
+                  
+                  <div className='d-flex justify-content-between'>
+                    <div>
+                      <input 
+                        value={values.num} 
+                        name='num' 
+                        placeholder='Num' 
+                        className='small-input'
+                        style={errors.num ? {borderColor: 'var(--error)'} : {borderColor: 'var(--grey-600)'}}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.num && errors.num && (
+                        <p style={{color: 'var(--error)', fontSize: '8px', textAlign: 'right'}}>
+                          {errors.num}
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <input 
+                        value={values.cap} 
+                        name='cap' 
+                        placeholder='CAP' 
+                        className='small-input'
+                        style={errors.cap ? {borderColor: 'var(--error)'} : {borderColor: 'var(--grey-600)'}}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      /> 
+                      {touched.cap && errors.cap && (
+                        <p style={{color: 'var(--error)', fontSize: '8px', textAlign: 'right'}}>
+                          {errors.cap}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 
                 </div>

@@ -93,6 +93,10 @@ p {
   height: 1.5rem;
 }
 
+.divider {
+  width: 0.5rem;
+}
+
 @media screen and (min-width: 992px) {
   .btn-page {
     padding: 0.2rem 2rem;
