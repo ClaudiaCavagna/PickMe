@@ -78,6 +78,16 @@ p {
   transform: scale(1.04);
   background-color: var(--transparent-pink);
 }
+
+.btn-page-disabled{
+  background-color: transparent;
+  border: 1px solid var(--grey-600);
+  border-radius: 22px;
+  color: var(--grey-600);
+  padding: 0.2rem 1rem;
+  letter-spacing: 2px;
+}
+
 .arrow-icon {
   width: 1.5rem;
   height: 1.5rem;
@@ -236,7 +246,7 @@ p {
   background-color: var(--grey-900);
   height: 100%;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 4.5rem;
   padding: 2rem;
 }
 
@@ -247,7 +257,8 @@ p {
 
 .checkout-form input {
   background-color: var(--grey-900);
-  border: 1px solid var(--grey-600);
+  color: var(--white);
+  border: 1px solid;
   padding: 4px 10px;
   border-radius: 15px;
   margin-block: 10px;
@@ -275,6 +286,8 @@ p {
   letter-spacing: 1.5px;
 }
 
+
+
 @media screen and (min-width: 488px) {
   .checkout-title {
     font-size: 3.5rem;
@@ -298,13 +311,13 @@ p {
     justify-content: space-between;
   }
   .list-container {
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
   .form-container {
     width: 40%;
     padding-block: 3rem;
   }
   .cart-item {
-    width: 450px;
+    width: 550px;
   }
 }
