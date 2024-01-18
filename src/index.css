@@ -214,3 +214,80 @@ p {
   }
 }
 
+/* CHECKOUT STYLE */
+.btn-remove {
+  background-color: var(--grey-800);
+  border: none;
+  color: var(--purple-300);
+}
+.btn-remove:hover {
+  transform: scale(1.03);
+}
+
+.text-checkout {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.form-container {
+  border: 1px solid var(--grey-600);
+  border-radius: 15px;
+  background-color: var(--grey-900);
+  height: 100%;
+  width: 100%;
+  margin-top: 3rem;
+  padding: 2rem;
+}
+
+.form-container h5 {
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.checkout-form input {
+  background-color: var(--grey-900);
+  border: 1px solid var(--grey-600);
+  padding: 4px 10px;
+  border-radius: 15px;
+  margin-block: 10px;
+  margin-inline: 3px;
+}
+
+.medium-input {
+  width: 100%;
+}
+
+.small-input {
+  width: 80px;
+}
+
+@media screen and (min-width: 488px) {
+  .checkout-title {
+    font-size: 3.5rem;
+  }
+  .checkout-form .input-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  .checkout-form .medium-input{
+    width: 100%;
+  }
+  
+  .checkout-form .small-input {
+    width: 90px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .xl-checkout {
+    display: flex;
+    justify-content: space-between;
+  }
+  .list-container {
+    margin-top: 3rem;
+  }
+  .form-container {
+    width: 50%;
+    padding-block: 3rem;
+  }
+}

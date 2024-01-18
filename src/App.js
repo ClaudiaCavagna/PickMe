@@ -10,12 +10,9 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        
         <Route path='/' element={<Homepage />} />
+        <Route path='/photo/:page' element={<Paginated />} />
         <Route path='/checkout/' element={<Checkout />} />
-        <Route path='/photo/:page' element={<Paginated />}
-        />
-
       </Routes>
       <Footer />
     </Router>

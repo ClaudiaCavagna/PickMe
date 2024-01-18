@@ -5,6 +5,7 @@ import Paginator from '../components/Paginator';
 import { fetchData, saveQuery, updatePage } from '../redux/reducers/api-reducer';
 import { rowalizer } from '../utils/helpers';
 import PhotoSection from '../components/PhotoSection';
+import Hero from '../components/Hero';
 
 const Paginated = () => {
   const { page } = useParams();
@@ -29,7 +30,9 @@ const Paginated = () => {
 
   return (
     <section className='container'>
-      <div style={{marginTop: '90px'}}>
+      
+       <Hero />
+       <div style={{marginTop: '3rem'}}> 
       { 
         !loading && 
         !error.status && 
@@ -38,13 +41,13 @@ const Paginated = () => {
             return <PhotoSection row={row} index={index}/>
           })
         ) : !loading && error.status ? (
-          <h3>
+          <h3 className='text-center'>
             {
               error?.message && error?.message?.length > 0 ? error.message.join(" ") : "Sorry, an error occured. Try later"
             }
           </h3>
         ) : (
-          <h3>Loading...</h3>
+          <h3 className='text-center'>Loading...</h3>
         )
         }
         <div className='mt-2'>
