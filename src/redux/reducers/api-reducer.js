@@ -58,7 +58,7 @@ const apiSlice = createSlice({
             state.photos = [];
         },
         cleanError: (state) => {
-            state.error.state = false;
+            state.error.status = false;
             state.error.message = "";
         },
         checkRateLimiter: (state, action) => {

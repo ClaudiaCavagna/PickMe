@@ -43,7 +43,7 @@ const Paginated = () => {
         ) : !loading && error.status ? (
           <h3 className='text-center'>
             {
-              error?.message && error?.message?.length > 0 ? error.message.join(" ") : "Sorry, an error occured. Try later"
+              error?.message && error.message.length > 0 ? error.message.join(" ") : "Sorry, an error occured. Try later"
             }
           </h3>
         ) : (

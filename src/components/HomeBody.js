@@ -38,12 +38,12 @@ const HomeBody = () => {
 
 
   const searchPhoto = (page = 1) => {
-    // dispatch(cleanError(error));
     fetchPhotos("search", page);
   }
 
   const handleChange = (e) => {
-    dispatch(cleanError(error));
+    dispatch(cleanError())
+    console.log(`Error status: ${error.status}`)
     const { value } = e.target;
     setQuery(value);
   }
@@ -74,14 +74,14 @@ const HomeBody = () => {
         </button>
       </div>
       <div className='mt-5 text-center'>
-        { !loading && !error.status && (photos?.length > 0 || photos?.results.length > 0) ? (
+        { !loading && !error.status && (photos?.length > 0 || photos?.results?.length > 0) ? (
           rowalizer(photos?.results ? photos.results : photos).map((row, index) => {
             return <PhotoSection row={row} index={index}/>
           })
         ) : !loading && error.status ? (
           <h3>
             {
-              error?.message && error?.message?.length > 0 ? error.message.join(" ") : "Sorry, an error occured. Try later"
+              error?.message && error.message.length > 0 ? error.message.join(" ") : "Sorry, an error occured. Try later"
             }
           </h3>
         ) : (
