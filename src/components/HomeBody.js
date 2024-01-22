@@ -42,8 +42,7 @@ const HomeBody = () => {
   }
 
   const handleChange = (e) => {
-    dispatch(cleanError())
-    console.log(`Error status: ${error.status}`)
+    dispatch(cleanError());
     const { value } = e.target;
     setQuery(value);
   }

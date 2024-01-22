@@ -97,6 +97,10 @@ p {
   width: 0.5rem;
 }
 
+.btn-animation:active {
+  transform: rotateY(180deg);
+}
+
 @media screen and (min-width: 992px) {
   .btn-page {
     padding: 0.2rem 2rem;

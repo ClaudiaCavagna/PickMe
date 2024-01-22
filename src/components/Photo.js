@@ -96,7 +96,7 @@ const Photo = ({alt_description, color, urls: {regular}, likes, id, user: {usern
               <p>{price}€</p>
             </div>
               
-              <button className='btn' onClick={() => dispatch(addSingleItem({id, price, url: regular, alt_description, user: username}))}>
+              <button className='btn btn-animation' onClick={() => dispatch(addSingleItem({id, price, url: regular, alt_description, user: username}))}>
                 <CartIcon className='cart-icon-small' />
               </button>
           </div>   
