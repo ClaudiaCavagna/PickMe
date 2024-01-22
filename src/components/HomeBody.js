@@ -14,15 +14,14 @@ const HomeBody = () => {
   const [itemPerPage, setItemPerPage] = useState(lastSearch.itemPerPage || 12);
   const [query, setQuery] = useState(lastSearch.query || "");
 
-  const fetchPhotos = (type = 'latest', page = 1) => {
+  const fetchPhotos = (type = 'popular', page = 1) => {
     let apiUrl = null;
-    if(type === "search") {
-      if(query && query.length > 1 && query !== " ") {
-        apiUrl = `search/photos?query=${query}&`;
-      } else {
-        dispatch(catchError([query === '' ? 'Write at least one character' : 'Sorry, no results found']));
+    if (type === "search") {
+      if (!query || query === " ") {
+        dispatch(catchError(["Insert at least 1 characther"]));
         return;
       }
+      apiUrl = `search/photos?query=${query}&`;
     } else {
       apiUrl = "photos?";
     }
@@ -39,7 +38,14 @@ const HomeBody = () => {
 
 
   const searchPhoto = (page = 1) => {
+    // dispatch(cleanError(error));
     fetchPhotos("search", page);
+  }
+
+  const handleChange = (e) => {
+    dispatch(cleanError(error));
+    const { value } = e.target;
+    setQuery(value);
   }
 
   useEffect(() => {
@@ -48,7 +54,6 @@ const HomeBody = () => {
     } else {
       fetchPhotos(lastSearch.type);
     }
-    
   }, [itemPerPage]);
 
   return (
@@ -57,12 +62,12 @@ const HomeBody = () => {
         <h4>search your photos</h4>
         <p className='request-p'>{`Requests: ${rate_limit.remaining}/${rate_limit.total}`}</p>
       </div>
-      <div className='input-wrapper place-items'>
+      <div className='input-wrapper place-items' style={{borderColor: error.status ? "var(--error)" : "var(--grey-600)"}}>
         <input 
           type='text' 
           placeholder='Search your photo' 
           value={query} 
-          onChange={(e) => {setQuery(e.target.value)}}
+          onChange={handleChange}
         />
         <button className='btn' onClick={() => searchPhoto()}>
           <SearchIcon className='search-icon' />
