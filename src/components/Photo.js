@@ -67,11 +67,11 @@ const Card = styled('div')`
   }
   @media screen and (min-width: 992px) {
     width: 280px;
-    height: 300px;
+    height: 280px;
   }
   @media screen and (min-width: 1200px) {
     width: 330px;
-    height: 350px;
+    height: 330px;
     .card-action {
       padding: 4rem;
     }
